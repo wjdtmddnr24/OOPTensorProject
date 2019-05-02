@@ -1,6 +1,6 @@
 package tensor;
 
-public class VectorImpl implements Vector {
+class VectorImpl implements Vector {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj); //TODO equals 오버라이딩

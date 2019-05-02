@@ -1,6 +1,6 @@
 package tensor;
 
-public class ScalarImpl implements Scalar {
+class ScalarImpl implements Scalar {
 
     @Override
     public String toString() {

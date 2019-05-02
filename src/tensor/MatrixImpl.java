@@ -1,20 +1,7 @@
 package tensor;
 
-public class MatrixImpl implements Matrix {
-    @Override
-    public String toString() {
-        return super.toString(); //TODO toString 오버라이딩
-    }
+class MatrixImpl implements Matrix {
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);//TODO equals 오버라이딩
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
     @Override
     public void setMatrix(long row, long col, Double value) {
@@ -189,5 +176,20 @@ public class MatrixImpl implements Matrix {
     @Override
     public Matrix getInverseMatrix() throws NonSquareMatrixException, NonInvertibleMatrixException {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString(); //TODO toString 오버라이딩
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);//TODO equals 오버라이딩
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
