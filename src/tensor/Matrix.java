@@ -5,13 +5,13 @@ public interface Matrix extends Cloneable {
     int CONCAT_DIRECTION_VERTICAL = 1;
 
 
-    void setMatrix(long row, long col, Double value) throws SizeLessThanZeroException;
+    void setMatrix(int row, int col, Double value) throws SizeLessThanZeroException;
 
-    void setMatrix(long row, long col, Scalar scalar) throws SizeLessThanZeroException;
+    void setMatrix(int row, int col, Scalar scalar) throws SizeLessThanZeroException;
 
-    void setMatrix(long row, long col, Double i, Double j) throws SizeLessThanZeroException;
+    void setMatrix(int row, int col, Double i, Double j) throws SizeLessThanZeroException;
 
-    void setMatrix(long row, long col, Scalar i, Scalar j) throws SizeLessThanZeroException;
+    void setMatrix(int row, int col, Scalar i, Scalar j) throws SizeLessThanZeroException;
 
     void setMatrix(String csv) throws SizeLessThanZeroException, WrongCSVFormatException;
 
@@ -19,15 +19,15 @@ public interface Matrix extends Cloneable {
 
     void setMatrix(Scalar[][] arr) throws SizeLessThanZeroException;
 
-    void setMatrix(long n) throws SizeLessThanZeroException;//단위 행
+    void setMatrix(int n) throws SizeLessThanZeroException;//단위 행
 
-    void update(long row, long col, Scalar scalar) throws IndexOutOfBoundException;
+    void update(int row, int col, Scalar scalar) throws IndexOutOfBoundException;
 
-    Scalar getScalar(long row, long col) throws IndexOutOfBoundException;
+    Scalar getScalar(int row, int col) throws IndexOutOfBoundException;
 
-    long getSizeRow();
+    int getSizeRow();
 
-    long getSizeCol();
+    int getSizeCol();
 
     Matrix add(Matrix matrix) throws SizeMismatchException;
 
@@ -52,13 +52,13 @@ public interface Matrix extends Cloneable {
         return null;
     }
 
-    Vector getVectorRow(long row) throws IndexOutOfBoundException;
+    Vector getVectorRow(int row) throws IndexOutOfBoundException;
 
-    Vector getVectorCol(long col) throws IndexOutOfBoundException;
+    Vector getVectorCol(int col) throws IndexOutOfBoundException;
 
-    Matrix getSubMatrix(long startRow, long startCol, long endRow, long endCol) throws IndexOutOfBoundException;
+    Matrix getSubMatrix(int startRow, int startCol, int endRow, int endCol) throws IndexOutOfBoundException;
 
-    Matrix getMinorMatrix(long row, long col) throws IndexOutOfBoundException;
+    Matrix getMinorMatrix(int row, int col) throws IndexOutOfBoundException;
 
     Matrix getTranspose();
 
@@ -75,17 +75,17 @@ public interface Matrix extends Cloneable {
     boolean isZeroMatrix();
 
     /* 아래 6개 기능은 기본행렬 곱해서 만들면 쉽다.  */
-    Matrix rowSwitchTransform(long row1, long row2) throws IndexOutOfBoundException;
+    Matrix rowSwitchTransform(int row1, int row2) throws IndexOutOfBoundException;
 
-    Matrix colSwitchTransform(long col1, long col2) throws IndexOutOfBoundException;
+    Matrix colSwitchTransform(int col1, int col2) throws IndexOutOfBoundException;
 
-    Matrix rowMultiplyTransform(long row, Scalar scalar) throws IndexOutOfBoundException;
+    Matrix rowMultiplyTransform(int row, Scalar scalar) throws IndexOutOfBoundException;
 
-    Matrix colMultiplyTransform(long col, Scalar scalar) throws IndexOutOfBoundException;
+    Matrix colMultiplyTransform(int col, Scalar scalar) throws IndexOutOfBoundException;
 
-    Matrix rowAdditionTransform(long destinationRow, long sourceRow, Scalar scalar) throws IndexOutOfBoundException; // M[destinationRow] += scalar * M[sourceRow]
+    Matrix rowAdditionTransform(int destinationRow, int sourceRow, Scalar scalar) throws IndexOutOfBoundException; // M[destinationRow] += scalar * M[sourceRow]
 
-    Matrix colAdditionTransform(long destinationCol, long sourceCol, Scalar scalar) throws IndexOutOfBoundException; // M[destinationCol] += scalar * M[sourceCol]
+    Matrix colAdditionTransform(int destinationCol, int sourceCol, Scalar scalar) throws IndexOutOfBoundException; // M[destinationCol] += scalar * M[sourceCol]
 
     Matrix getRREF();
 

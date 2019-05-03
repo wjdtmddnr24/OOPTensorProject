@@ -1,23 +1,23 @@
 package tensor;
 
 public interface Vector extends Cloneable {
-    void setVector(long dimension, Double value) throws SizeLessThanZeroException;
+    void setVector(int dimension, Double value) throws SizeLessThanZeroException;
 
-    void setVector(long dimension, Scalar scalar) throws SizeLessThanZeroException;
+    void setVector(int dimension, Scalar scalar) throws SizeLessThanZeroException;
 
-    void setVector(long dimension, Double i, Double j) throws SizeLessThanZeroException;
+    void setVector(int dimension, Double i, Double j) throws SizeLessThanZeroException;
 
-    void setVector(long dimension, Scalar i, Scalar j) throws SizeLessThanZeroException;
+    void setVector(int dimension, Scalar i, Scalar j) throws SizeLessThanZeroException;
 
     void setVector(Double[] arr) throws SizeLessThanZeroException;
 
     void setVector(Scalar[] arr) throws SizeLessThanZeroException;
 
-    void update(long col, Scalar scalar) throws IndexOutOfBoundException;
+    void update(int col, Scalar scalar) throws IndexOutOfBoundException;
 
-    Scalar getScalar(long col) throws IndexOutOfBoundException;
+    Scalar getScalar(int col) throws IndexOutOfBoundException;
 
-    long getSize();
+    int getSize();
 
     Vector add(Vector vector) throws SizeMismatchException;
 
