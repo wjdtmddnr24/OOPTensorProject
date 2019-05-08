@@ -3,6 +3,7 @@ package tensor;
 public interface Scalar extends Comparable<Scalar>, Cloneable {
     Double getValue();
 
+    void setValue(Double value);
 
     Scalar add(Scalar scalar);
 
