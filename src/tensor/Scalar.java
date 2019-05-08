@@ -5,6 +5,8 @@ public interface Scalar extends Comparable<Scalar>, Cloneable {
 
     void setValue(Double value);
 
+    void setValue(Double i, Double j);
+
     Scalar add(Scalar scalar);
 
     Scalar mul(Scalar scalar);
