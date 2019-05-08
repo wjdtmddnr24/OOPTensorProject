@@ -4,23 +4,6 @@ public interface Matrix extends Cloneable {
     int CONCAT_DIRECTION_HORIZONTAL = 0;
     int CONCAT_DIRECTION_VERTICAL = 1;
 
-
-    void setMatrix(int row, int col, Double value) throws SizeLessThanZeroException;
-
-    void setMatrix(int row, int col, Scalar scalar) throws SizeLessThanZeroException;
-
-    void setMatrix(int row, int col, Double i, Double j) throws SizeLessThanZeroException;
-
-    void setMatrix(int row, int col, Scalar i, Scalar j) throws SizeLessThanZeroException;
-
-    void setMatrix(String csv) throws SizeLessThanZeroException, WrongCSVFormatException;
-
-    void setMatrix(Double[][] arr) throws SizeLessThanZeroException;
-
-    void setMatrix(Scalar[][] arr) throws SizeLessThanZeroException;
-
-    void setMatrix(int n) throws SizeLessThanZeroException;//단위 행
-
     void update(int row, int col, Scalar scalar) throws IndexOutOfBoundException;
 
     Scalar getScalar(int row, int col) throws IndexOutOfBoundException;
