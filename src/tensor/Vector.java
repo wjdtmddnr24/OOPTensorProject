@@ -72,4 +72,7 @@ public interface Vector extends Cloneable {
     //n-차원 벡터 객체는 자신으로부터 1xn 행렬을 생성하여 반환할 수 있다.
     Matrix toMatrix1xN();
 
+
+    //클론 함수 오버라이딩
+    Object clone() throws CloneNotSupportedException;
 }

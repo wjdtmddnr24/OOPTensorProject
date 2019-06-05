@@ -176,4 +176,8 @@ public interface Matrix extends Cloneable {
     //행렬은 자신의 역행렬을 구해줄 수 있다. (nxn 행렬) ## 예외 클래스 정의
     Matrix getInverseMatrix() throws NonSquareMatrixException, NonInvertibleMatrixException;
 
+    //클론 함수 오버라이딩
+    Object clone() throws CloneNotSupportedException;
+
+
 }

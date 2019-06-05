@@ -47,5 +47,7 @@ public interface Scalar extends Comparable<Scalar>, Cloneable {
         return ((Scalar) a.clone()).mul(b);
     }
 
+    //클론 함수 오버라이딩
+    Object clone() throws CloneNotSupportedException;
 
 }
