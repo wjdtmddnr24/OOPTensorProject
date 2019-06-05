@@ -56,13 +56,13 @@ public interface Vector extends Cloneable {
 
 
     //전달받은 두 벡터의 덧셈이 가능하다. (길이가 같을 때)
-    static Vector add(Vector a, Vector b) throws SizeMismatchException, CloneNotSupportedException {
+    default Vector add(Vector a, Vector b) throws SizeMismatchException, CloneNotSupportedException {
         if (a.getSize() != b.getSize()) throw new SizeMismatchException();
         return ((Vector) a.clone()).add(b);
     }
 
     //전달받은 스칼라와 벡터의 곱셈이 가능하다. (벡터의 모든 요소에 스칼라를 곱한다.)
-    static Vector mul(Vector a, Scalar b) throws CloneNotSupportedException {
+    default Vector mul(Vector a, Scalar b) throws CloneNotSupportedException {
         return ((Vector) a.clone()).mul(b);
     }
 

@@ -66,14 +66,14 @@ public interface Matrix extends Cloneable {
     Matrix mul(Matrix matrix, boolean isOperand) throws SizeMismatchException;
 
     //전달받은 두 행렬의 덧셈이 가능하다. (크기가 같을 때)
-    static Matrix add(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
+    default Matrix add(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
         if (a.getSizeRow() != b.getSizeRow() || a.getSizeCol() != b.getSizeCol())
             throw new SizeMismatchException();
         return ((Matrix) a.clone()).add(b);
     }
 
     //전달받은 두 행렬의 곱셈이 가능하다. ((mxn)x(nxl)일 때)
-    static Matrix mul(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
+    default Matrix mul(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
         if (a.getSizeCol() != b.getSizeRow())
             throw new SizeMismatchException();
         return ((Matrix) a.clone()).mul(b, true);
@@ -82,7 +82,7 @@ public interface Matrix extends Cloneable {
     //행렬은 다른 행렬과 가로로 합쳐질 수 있다. (두 행렬의 행 수가 같아야 가능)
     //행렬은 다른 행렬과 세로로 합쳐질 수 있다. (두 행렬의 열 수가 같아야 가능)
     //concat(a,b,Matrix.CONCAT_DIRECTION_HORIZONTAL)이런식으로 사용
-    static Matrix concat(Matrix a, Matrix b, int direction) throws SizeMismatchException {
+    default Matrix concat(Matrix a, Matrix b, int direction) throws SizeMismatchException {
         if (direction == CONCAT_DIRECTION_HORIZONTAL) {
             if (a.getSizeRow() != b.getSizeRow())
                 throw new SizeMismatchException();
