@@ -128,7 +128,7 @@ public interface Matrix extends Cloneable {
     Matrix getTranspose();
 
     //행렬은 대각 요소의 합을 구해줄 수 있다. (nxn 행렬) (trace)
-    Scalar getTrace();
+    Scalar getTrace() throws NonSquareMatrixException;
 
     //행렬은 자신이 정사각 행렬인지 여부를 판별해 줄 수 있다.
     boolean isSquareMatrix();
@@ -171,7 +171,7 @@ public interface Matrix extends Cloneable {
     boolean isRREF();
 
     //행렬은 자신의 행렬식을 구해줄 수 있다. (nxn 행렬) (determinant)
-    Scalar getDeterminant();
+    Scalar getDeterminant() throws NonSquareMatrixException;
 
     //행렬은 자신의 역행렬을 구해줄 수 있다. (nxn 행렬) ## 예외 클래스 정의
     Matrix getInverseMatrix() throws NonSquareMatrixException, NonInvertibleMatrixException;
