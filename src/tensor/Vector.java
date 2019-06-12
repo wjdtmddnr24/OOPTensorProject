@@ -55,16 +55,7 @@ public interface Vector extends Cloneable {
     Vector mul(Scalar scalar);
 
 
-    //전달받은 두 벡터의 덧셈이 가능하다. (길이가 같을 때)
-    default Vector add(Vector a, Vector b) throws SizeMismatchException, CloneNotSupportedException {
-        if (a.getSize() != b.getSize()) throw new SizeMismatchException();
-        return ((Vector) a.clone()).add(b);
-    }
 
-    //전달받은 스칼라와 벡터의 곱셈이 가능하다. (벡터의 모든 요소에 스칼라를 곱한다.)
-    default Vector mul(Vector a, Scalar b) throws CloneNotSupportedException {
-        return ((Vector) a.clone()).mul(b);
-    }
 
     //n-차원 벡터 객체는 자신으로부터 nx1 행렬을 생성하여 반환할 수 있다.
     Matrix toMatrixNx1();

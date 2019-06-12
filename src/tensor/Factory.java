@@ -68,9 +68,8 @@ public class Factory {
 
     public static Matrix getMatrix(Scalar[][] arr) throws SizeMismatchException {
         return new MatrixImpl(arr);
-
     }
-
+    
     public static Matrix getMatrix(int n) throws SizeLessThanZeroException {
         return new MatrixImpl(n);
     }

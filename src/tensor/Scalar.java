@@ -37,15 +37,6 @@ public interface Scalar extends Comparable<Scalar>, Cloneable {
     //스칼라는 다른 스칼라와 곱셈이 가능하다.
     Scalar mul(Scalar scalar);
 
-    //전달받은 두 스칼라의 덧셈이 가능하다.
-    default Scalar add(Scalar a, Scalar b) throws CloneNotSupportedException {
-        return ((Scalar) a.clone()).add(b);
-    }
-
-    //전달받은 두 스칼라의 곱셈이 가능하다.
-    default Scalar mul(Scalar a, Scalar b) throws CloneNotSupportedException {
-        return ((Scalar) a.clone()).mul(b);
-    }
 
     //클론 함수 오버라이딩
     Object clone() throws CloneNotSupportedException;

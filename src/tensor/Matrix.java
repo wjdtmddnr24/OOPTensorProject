@@ -19,8 +19,6 @@ package tensor;
     주의 : clone()함수 오버라이딩 꼭 하세요.
  */
 public interface Matrix extends Cloneable {
-    public int CONCAT_DIRECTION_HORIZONTAL = 0;
-    public int CONCAT_DIRECTION_VERTICAL = 1;
 
     //지정한 하나의 값을 모든 요소의 값으로 하는 m x n 행렬을 생성할 수 있다.
     void setMatrix(int row, int col, Double value) throws SizeLessThanZeroException;
@@ -64,53 +62,6 @@ public interface Matrix extends Cloneable {
     //행렬은 다른 행렬과 곱셈이 가능하다. ((mxn)x(nxl)일 때)
     // 다른 행렬이 왼쪽 행렬로서 곱해지는 경우와 오른쪽 행렬로서 곱해지는 경우 모두 지원 => isOperand=true -> this.matrix * matrix, isOperand=false -> matrix * this.matrix
     Matrix mul(Matrix matrix, boolean isOperand) throws SizeMismatchException;
-
-    //전달받은 두 행렬의 덧셈이 가능하다. (크기가 같을 때)
-    default Matrix add(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
-        if (a.getSizeRow() != b.getSizeRow() || a.getSizeCol() != b.getSizeCol())
-            throw new SizeMismatchException();
-        return ((Matrix) a.clone()).add(b);
-    }
-
-    //전달받은 두 행렬의 곱셈이 가능하다. ((mxn)x(nxl)일 때)
-    default Matrix mul(Matrix a, Matrix b) throws SizeMismatchException, CloneNotSupportedException {
-        if (a.getSizeCol() != b.getSizeRow())
-            throw new SizeMismatchException();
-        return ((Matrix) a.clone()).mul(b, true);
-    }
-
-    //행렬은 다른 행렬과 가로로 합쳐질 수 있다. (두 행렬의 행 수가 같아야 가능)
-    //행렬은 다른 행렬과 세로로 합쳐질 수 있다. (두 행렬의 열 수가 같아야 가능)
-    //concat(a,b,Matrix.CONCAT_DIRECTION_HORIZONTAL)이런식으로 사용
-    default Matrix concat(Matrix a, Matrix b, int direction) throws SizeMismatchException {
-        if (direction == CONCAT_DIRECTION_HORIZONTAL) {
-            if (a.getSizeRow() != b.getSizeRow())
-                throw new SizeMismatchException();
-            Matrix matrix = new MatrixImpl(a.getSizeRow(), a.getSizeCol() + b.getSizeCol(), 0.0);
-            for (int i = 0; i < a.getSizeRow(); i++) {
-                for (int j = 0; j < a.getSizeCol(); j++) {
-                    matrix.update(i, j, a.getScalar(i, j));
-                }
-                for (int j = 0; j < b.getSizeCol(); j++) {
-                    matrix.update(i, a.getSizeCol() + j, b.getScalar(i, j));
-                }
-            }
-            return matrix;
-        } else {
-            if (a.getSizeCol() != b.getSizeCol())
-                throw new SizeMismatchException();
-            Matrix matrix = new MatrixImpl(a.getSizeRow() + b.getSizeRow(), a.getSizeCol(), 0.0);
-            for (int j = 0; j < a.getSizeCol(); j++) {
-                for (int i = 0; i < a.getSizeRow(); i++) {
-                    matrix.update(i, j, a.getScalar(i, j));
-                }
-                for (int i = 0; i < b.getSizeRow(); i++) {
-                    matrix.update(i + a.getSizeRow(), j, b.getScalar(i, j));
-                }
-            }
-            return matrix;
-        }
-    }
 
     //행렬은 특정 행을 벡터 형태로 추출해 줄 수 있다. (행 벡터 추출)
     Vector getVectorRow(int row) throws IndexOutOfBoundException;
