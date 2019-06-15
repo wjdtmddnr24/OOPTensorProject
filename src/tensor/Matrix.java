@@ -63,6 +63,13 @@ public interface Matrix extends Cloneable {
     // 다른 행렬이 왼쪽 행렬로서 곱해지는 경우와 오른쪽 행렬로서 곱해지는 경우 모두 지원 => isOperand=true -> this.matrix * matrix, isOperand=false -> matrix * this.matrix
     Matrix mul(Matrix matrix, boolean isOperand) throws SizeMismatchException;
 
+    //행렬은 다른 행렬과 가로로 합쳐질 수 있다. (두 행렬의 행 수가 같아야 가능)
+    //행렬은 다른 행렬과 세로로 합쳐질 수 있다. (두 행렬의 열 수가 같아야 가능)
+    //concat(b,Tensors.CONCAT_DIRECTION_HORIZONTAL)이런식으로 사용
+    //해당 객체가 가로로 합쳐질때는 왼쪽, 인자로 받은 행렬이 오른쪽
+    //해당 객체가 세로로 합쳐질때는 위쪽, 인자로 받은 행렬이 아래쪽
+    Matrix concat(Matrix a, int direction) throws SizeMismatchException;
+
     //행렬은 특정 행을 벡터 형태로 추출해 줄 수 있다. (행 벡터 추출)
     Vector getVectorRow(int row) throws IndexOutOfBoundException;
 
